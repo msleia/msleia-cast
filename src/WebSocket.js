@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import SockJS from 'sockjs-client';
 import Stomp from 'stompjs';
 
-const socket = SockJS("http://localhost:8080/command");
+const socket = SockJS("https://msleia.herokuapp.com/command");
 const ws = Stomp.over(socket);
 
 class WebSocket extends Component{
@@ -43,6 +43,7 @@ class WebSocket extends Component{
                 const commandMsg = body.data.command;
                 this.setState({command:commandMsg});
                 this.setState({ timeStamp: Date.now()});
+                this.props.commandHandler(commandMsg);
             }
         };
         
