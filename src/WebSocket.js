@@ -66,7 +66,7 @@ class WebSocket extends Component{
 
     render() {
         const command = this.state.command;
-        return (<span >{command}</span>);
+        return (<span />);
     }
 }
 
