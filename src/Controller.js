@@ -11,29 +11,25 @@ class Controller extends Component{
     }
     
     state = {
-        command : "WELCOME"
+        command : "WELCOME",
+        message : "Hi! This is Leia. What would you like to Learn?"
     };
     handleCommand(commandMsg){
         this.setState({command:commandMsg})
+        if (commandMsg.toUpperCase() !== "WELCOME" && commandMsg.toUpperCase() !== "INIT"){
+            this.setState({message:commandMsg})
+        }
     }
     render(){
         
-        if (this.state.command !== "WELCOME") {
-            return (
-                <div class="container">
-                    <WebSocket commandHandler={this.handleCommand}/>
-                    <Welcome message="Let us start Learning!!"/>
-                </div>
-            )
-        }
-        else {
-            return (
-                <div class="container">
-                    <WebSocket commandHandler={this.handleCommand}/>
-                    <Welcome message="Hi! This is Leia. What would you like to Learn?"/>
-                </div>
-            )
-        }
+        
+        return (
+            <div class="container">
+                <WebSocket commandHandler={this.handleCommand}/>
+                <Welcome message={this.state.message}/>
+            </div>
+        )
+        
         
     }
 
