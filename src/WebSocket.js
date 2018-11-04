@@ -33,11 +33,15 @@ class WebSocket extends Component{
         const con = this.state.socket;
         con.onopen =  () => {
             console.log("Connected");
-            this.sendMessage("Hello from server")
+            setTimeout(()=>{
+                this.sendMessage({"username":window["msluser"]});
+            }, 5000);
+            
         };
         con.onmessage = (body) => {
             console.log("what the hell??");
-            
+            console.log(body)
+            console.log(body.data)
             if (body.data instanceof Object && 'command' in body.data) {
                 console.log(body.data.command)
                 const commandMsg = body.data.command;
@@ -57,7 +61,7 @@ class WebSocket extends Component{
         // this.state.ws.send("/command", {priority: 9}, "Hello, STOMP");
     }
     sendMessage(msg){
-        this.state.ws.send({"message":msg})
+        this.state.ws.send(JSON.stringify({"message":msg}))
     }
 
     receiveMsg(){

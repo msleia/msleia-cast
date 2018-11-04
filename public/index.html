@@ -64,6 +64,7 @@
         function displayText(text) {
           console.log(text);
           // document.getElementById('message').src = text;
+          window["msluser"] = text;
           window.castReceiverManager.setApplicationState(text);
         };
       </script>
