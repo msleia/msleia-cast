@@ -11,10 +11,21 @@ class Welcome extends Component{
 
 
     render(){
+        let icon;
+        if (this.props.icon == 'OK') {
+            icon =  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        } else if(this.props.icon == 'WRONG') {
+            icon =  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        } else {
+            icon = <span/>
+        }
+
         return (
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                <h1 class="display-4">{this.props.message}</h1>
+                <h1 class="display-4">{this.props.message}
+                
+                {icon}</h1>
                 </div>
             </div>
         )

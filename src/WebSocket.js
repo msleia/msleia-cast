@@ -47,7 +47,7 @@ class WebSocket extends Component{
                 const commandMsg = body.data.command;
                 this.setState({command:commandMsg});
                 this.setState({ timeStamp: Date.now()});
-                this.props.commandHandler(commandMsg);
+                this.props.commandHandler(body.data);
             }
         };
         

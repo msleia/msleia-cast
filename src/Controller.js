@@ -12,12 +12,25 @@ class Controller extends Component{
     
     state = {
         command : "WELCOME",
-        message : "Hi! This is Leia. What would you like to Learn?"
+        message : "Hi! This is Leia. What would you like to Learn?",
+        prevMsg : "",
+        feedback: ""
     };
-    handleCommand(commandMsg){
-        this.setState({command:commandMsg})
+    handleCommand(payload){
+        commandMsg = payload.command
+        special_icon = payload.feedback
+        
         if (commandMsg.toUpperCase() !== "WELCOME" && commandMsg.toUpperCase() !== "INIT"){
-            this.setState({message:commandMsg})
+            if (this.state.command.toUpperCase() !== "WELCOME" && this.state.command.toUpperCase() !== "INIT"){
+                this.setState({prevMsg:this.state.command})
+                this.setState({feedback:special_icon});
+            }
+            setTimeout(() => {
+                this.setState({message:commandMsg});
+            }, 1000);
+            
+        } else {
+            this.setState({command:commandMsg});
         }
     }
     render(){
@@ -26,7 +39,7 @@ class Controller extends Component{
         return (
             <div class="container">
                 <WebSocket commandHandler={this.handleCommand}/>
-                <Welcome message={this.state.message}/>
+                <Welcome message={this.state.message} icon={this.state.feedback}/>
             </div>
         )
         
