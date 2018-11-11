@@ -11,11 +11,11 @@ class Welcome extends Component{
 
 
     render(){
-        let icon;
-        if (this.props.icon == 'OK') {
-            icon =  <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-        } else if(this.props.icon == 'WRONG') {
-            icon =  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        var icon;
+        if (this.props.icon === "OK") {
+            icon =  <span class="fas fa-check-square"></span>
+        } else if(this.props.icon === "WRONG") {
+            icon =  <span class="fas fa-times-circle"></span>
         } else {
             icon = <span/>
         }

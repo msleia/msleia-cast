@@ -39,14 +39,13 @@ class WebSocket extends Component{
             
         };
         con.onmessage = (body) => {
-            console.log("what the hell??");
-            console.log(body)
             console.log(body.data)
             if (body.data instanceof Object && 'command' in body.data) {
                 console.log(body.data.command)
                 const commandMsg = body.data.command;
                 this.setState({command:commandMsg});
                 this.setState({ timeStamp: Date.now()});
+                console.log("calling hander:.......")
                 this.props.commandHandler(body.data);
             }
         };

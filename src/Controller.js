@@ -6,7 +6,7 @@ class Controller extends Component{
 
     constructor(props){
         super(props);
-        this.handleCommand = this.handleCommand.bind(this)
+        this.handleCommand = this.handleCommand.bind(this);
         
     }
     
@@ -17,17 +17,22 @@ class Controller extends Component{
         feedback: ""
     };
     handleCommand(payload){
-        let commandMsg = payload.command
-        let special_icon = payload.feedback
+        console.log("Entering handle command");
+        const commandMsg = payload.command;
+        const special_icon = payload.feedback;
         
+        console.log("new command is: "+commandMsg.toUpperCase()+". Old Command was: "+this.state.command.toUpperCase());
         if (commandMsg.toUpperCase() !== "WELCOME" && commandMsg.toUpperCase() !== "INIT"){
             if (this.state.command.toUpperCase() !== "WELCOME" && this.state.command.toUpperCase() !== "INIT"){
-                this.setState({prevMsg:this.state.command})
+                this.setState({prevMsg:this.state.command});
                 this.setState({feedback:special_icon});
+                console.log("setting prev message to: "+this.state.prevMsg+" and feedback icon to "+this.state.feedback);
             }
             setTimeout(() => {
                 this.setState({message:commandMsg});
-            }, 1000);
+                this.setState({feedback:""})
+            }, 2000);
+            this.setState({command:"COMM"});
             
         } else {
             this.setState({command:commandMsg});
