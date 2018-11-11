@@ -17,8 +17,8 @@ class Controller extends Component{
         feedback: ""
     };
     handleCommand(payload){
-        commandMsg = payload.command
-        special_icon = payload.feedback
+        let commandMsg = payload.command
+        let special_icon = payload.feedback
         
         if (commandMsg.toUpperCase() !== "WELCOME" && commandMsg.toUpperCase() !== "INIT"){
             if (this.state.command.toUpperCase() !== "WELCOME" && this.state.command.toUpperCase() !== "INIT"){
