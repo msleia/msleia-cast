@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Welcome  from './Welcome'
 import WebSocket from './WebSocket'
+import VocabList from './VocabList'
 
 class Controller extends Component{
 
@@ -48,8 +49,8 @@ class Controller extends Component{
 
         var message = this.state.message
         
-        if (commandMsg == 'mastered_vocab') {
-            message = <ul>this.state.mastered_content.map( (w)=> <li>w.word</li>)</ul>
+        if (this.state.command == 'mastered_vocab') {
+            message = <VocabList mastered_content={this.state.mastered_content} />
         } else {
             message = <Welcome message={this.state.message} icon={this.state.feedback}/>
         }
