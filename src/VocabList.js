@@ -12,14 +12,14 @@ class VocabList extends Component{
 
     render(){
         var listitem =  this.props.mastered_content.map( (w)=> (
-            <li  class="list-group-item">{w.word}</li>
+            <span><span class="badge badge-info">{w.word}</span> &nbsp;</span>
         ));
         return (
             <div class="jumbotron jumbotron-fluid">
             <div class="container">
-            <ul class="list-group list-group-flush">
-                {listitem}    
-            </ul>
+                <h2>
+                {listitem}
+                </h2>
             </div>
             </div>
         )
